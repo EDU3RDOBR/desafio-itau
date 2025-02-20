@@ -33,6 +33,12 @@ public class TransacaoService {
         log.info("Transacao gravada com sucesso");
     }
 
+    public void limparTransacoes(){
+        log.info("Iniciando limpeza de transacoes");
+        listaTransacoes.clear();
+        log.info("Transaçôes limpadas com sucesso");
+    }
+
     public List<TransacaoRequestDTO> buscarTransacoes(Integer intervaloBusca){
         log.info("Iniciando busca de transçôes por tempo de intervalo " + intervaloBusca + " segundos");
 

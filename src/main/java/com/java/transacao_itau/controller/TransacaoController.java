@@ -31,4 +31,16 @@ public class TransacaoController {
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @DeleteMapping
+    @Operation(description = "Endpoint responsavel por deletar transaçôes")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Transações deletadas com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Erro de requisição"),
+            @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
+    })
+    public ResponseEntity<Void> deletarTransacoes(){
+        transacaoService.limparTransacoes();
+        return ResponseEntity.ok().build();
+    }
 }
