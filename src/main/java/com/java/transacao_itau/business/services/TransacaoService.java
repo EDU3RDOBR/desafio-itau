@@ -32,4 +32,14 @@ public class TransacaoService {
         listaTransacoes.add(dto);
         log.info("Transacao gravada com sucesso");
     }
+
+    public List<TransacaoRequestDTO> buscarTransacoes(Integer intervaloBusca){
+        log.info("Iniciando busca de transçôes por tempo de intervalo " + intervaloBusca + " segundos");
+
+        OffsetDateTime dataHoraIntervalo = OffsetDateTime.now().minusSeconds(intervaloBusca);
+
+        log.info("Retorno de transações com sucesso");
+        return listaTransacoes.stream().filter(transacao -> transacao.dataHora().isAfter(dataHoraIntervalo)).toList();
+
+    }
 }
